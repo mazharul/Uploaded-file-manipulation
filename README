@@ -1,0 +1,14 @@
+ php class for uploading and validating any picutre, video, files or script
+ and creating valid path on the server to upload the file.
+
+ @author Mazharul Anwar <mazharul2007@gmail.com>
+ @Homepage <strong>http://protishobdo.com</strong>
+ @Author Twitter <strong>http://twitter.com/mazharul_anwar</strong>
+ @package uploadClass
+ @version v1.0.200
+ @Previous version v1.0.199 
+ @release date: April28, 2010
+ @versionChange date May 11, 2010
+ @Thanks to Farhan <mohd.farhan@integricity.com>
+ @copyright Copyright (C) 2010,  Mazharul Anwar
+ @license http://www.gnu.org/licenses/ GNU General Public License
