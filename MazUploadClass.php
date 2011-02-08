@@ -1,18 +1,22 @@
 <?php
-/*----------------------------------
-php class for validating any picutre, video, files or script
-and creating valid path on the server to upload the file
-#-----------------------------------
-* @ Author: Mazharul Anwar(mazharul2007@gmail.com)
-* @ Homepage: http://protishobdo.com
-* @ Author Twitter: http://twitter.com/mazharul_anwar
-* @ Version : v1.0.200
-* @ Previous version: v1.0.199 
-* @ release date: April28, 2010
-* @version change date: May 11, 2010
-* @ Thanks to : Farhan (mohd.farhan@integricity.com)
-#------------------------------------------------------------------------------------------
+/**
+* php class for validating any picutre, video, files or script
+* and creating valid path on the server to upload the file
 
+* @author Mazharul Anwar <mazharul2007@gmail.com>
+* @Homepage <strong>http://protishobdo.com</strong>
+* @Author Twitter <strong>http://twitter.com/mazharul_anwar</strong>
+* @package uploadClass
+* @version v1.0.200
+* @Previous version v1.0.199 
+* @release date: April28, 2010
+* @versionChange date May 11, 2010
+* @Thanks to Farhan <mohd.farhan@integricity.com>
+* @copyright Copyright (C) 2010,  Mazharul Anwar
+* @license http://www.gnu.org/licenses/ GNU General Public License
+*/
+
+/**
 Copyright (C) 2010  Mazharul Anwar(mazharul2007@gmail.com)
 
     This program is free software: you can redistribute it and/or modify 
@@ -27,29 +31,35 @@ Copyright (C) 2010  Mazharul Anwar(mazharul2007@gmail.com)
 
     You should have received a copy of the GNU General Public License 
     along with this program.  If not, see <http://www.gnu.org/licenses/>. 
-#-----------------------------------------------------------------------------------------------*/
+*/
 
-/*------------------------------------------
-# main function to upload image 
-# in the server
----------------------------------------------*/
+/**
+* main function to upload image 
+* in the server
+*/
 class MazUploadClass{
 
+	/**
+     * @var array 
+     */
 	public $errorMsg;
 	 public $mainArray = array();
 
 
-/*--------------------------------------------
-* @Creating Path for uploaded files
-* @default path is ..user_uploads/$uploadType/$tyear/$tmonth/$tday/
-* @ you can change the $uploadType from your file handeling php file
----------------------------------------------*/
+/**
+* Creating Path for uploaded files
+* default path is ..user_uploads/$uploadType/$tyear/$tmonth/$tday/
+* you can change the $uploadType from your file handeling php file
+*/
 public function createPath($uploadType){
+
 		$tyear = date("Y");
 		$tmonth = date("m");
 		$tday = date("d");
 		
-	# Checking the directory and creating folders for images according to the year, month and day
+   /**
+	* Checking the directory and creating folders for images according to the year, month and day
+	*/  
 	  if (!is_dir("user_uploads/$uploadType/$tyear/$tmonth/$tday"))  
 		 {  
 			if (!is_dir("user_uploads/$uploadType/$tyear/$tmonth"))  
@@ -91,14 +101,17 @@ public function createPath($uploadType){
 		return $this->path = "user_uploads/$uploadType/$tyear/$tmonth/$tday/";
 				
 
-} #-----------/end of function createPath---
+} 
+/**
+* end of function createPath
+*/
 
-/*--------------------------
-# uploaded file validation
-# @param $pdf, the name of uploaded file, eg. $pdf = $_FILES['pdf'];
-# @param $size the file size that you want to restrict the user
-# @param $fltype is the type of file, currently support pdf, image, video, audio, pdf files!
------------------------------*/
+/**
+* uploaded file validation
+* @param $pdf, the name of uploaded file, eg. $pdf = $_FILES['pdf'];
+* @param $size the file size that you want to restrict the user
+* @param $fltype is the type of file, currently support pdf, image, video, audio, pdf files!
+*/
 
 public function uploadPDF($pdf, $size, $fltype){
 	
@@ -149,9 +162,10 @@ public function uploadPDF($pdf, $size, $fltype){
 
     } #---/end of pdf file upload-----
 
-/*-------------------------
-* array select
--------------------------------*/
+/**
+* selecting array 
+* @return string
+*/
 private  function arrayCondition($fltype){
 	        
 	          
@@ -186,21 +200,27 @@ private  function arrayCondition($fltype){
                 
               
 	}#----/end of Array select
-	
+
+/**
+* Generating random code
+* @param string $randomDigit
+* @return string
+*/	
 public function randomCode(){
 	$this->randomDigit=mt_rand();
 	return $this->randomDigit;
 }
 
-/*-----------------
-* @upload file
+/**
+* upload file
 * @param $file is temporary file name , $_FILES['pdf']['tmp_name']
 * @param original path to the server to store the file
-*----------------------*/
+*/
 
 public function uploadToServer($file, $to){
 	if(!empty($file) && !empty($to)){
-	move_uploaded_file($file, $to);
+	    if(move_uploaded_file($file, $to))
+	    	return true;
 	}
 }
 
