@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Uploaded file manipulation by mazharul</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Uploaded file manipulation</h1>
+        <p>Handle uploaded file, validation, create directories.</p>
+        <p class="view"><a href="https://github.com/mazharul/Uploaded-file-manipulation">View the Project on GitHub <small>mazharul/Uploaded-file-manipulation</small></a></p>
+        <ul>
+          <li><a href="https://github.com/mazharul/Uploaded-file-manipulation/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/mazharul/Uploaded-file-manipulation/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/mazharul/Uploaded-file-manipulation">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>File uploading, validation and security is such a pain for programmer. To simplify the problem I created a class called 'File Upload and validation'. For the people who are using or will be using the file this documentation will come in handy and useful to use the class efficiently.</p>
+
+<p><strong>File to Include:</strong>
+You only need to include the main class file in your back-end server side form processing file. the main class file is ' MazUploadClass.php'.</p>
+
+<p><strong>Example Files:</strong>
+Other two file, one is html file called 'index.html' and another back-end example PHP processing file namely 'uploader.php', in the package I included is to test out the class and and understand the way it works.
+<strong>Functions:</strong> </p>
+
+<div class="highlight">
+<pre><span class="x">uploadPDF($test,  $siz, $fletype);</span>
+</pre>
+</div>
+
+
+<p>This function is responsible for checking the uploaded file's type and MIME type as well. This function will validate the uploaded file. The parameters all are mandatory. <strong>$test</strong> variable is the example variable of holding the uploaded file. Such as: </p>
+
+<div class="highlight">
+<pre><span class="x">$test= $_FILES['pdf'];</span>
+</pre>
+</div>
+
+
+<p><strong>$siz</strong> This variable is responsible for the uploaded file size, developer can give the file size limitation here so that the file exceeding the given file size won't be uploaded and will show the error message instead.
+<strong>$fletype</strong> is the variable for file type that developer want his user to upload. For example, if I want to allow user to upload image then my code will look like this:</p>
+
+<div class="highlight">
+<pre><span class="x">$fletype= "image";</span>
+</pre>
+</div>
+
+
+<p>currently the class allows image, pdf, audio and video file type. The string $fletype variable should be holding  exactly "image"(for Image), "pdf"(for pdf files), "audio"(for audio files) and "video"(for video files) those strings.</p>
+
+<p>The function return an array of strings. The return value and error of files can be judged by calling this variable:</p>
+
+<div class="highlight">
+<pre><span class="x">errorFlag['fileFlag'] == "yes"; /*if it is true than the uploaded file MIME type is not correct or file type is not valid Give user an error message. if false you are good to upload your files*</span>
+</pre>
+</div>
+
+
+<p><strong>Second Function:</strong></p>
+
+<div class="highlight">
+<pre><span class="x">createPath($fletype);//any string that you want to be named as a folder name.</span>
+</pre>
+</div>
+
+
+<p>This function will return a valid path created on the server while uploading the file. The path will be "user_uploads/$fletype/year/month/day/" from your root. only changeable variable is $fletype, other than that other string and variable are predefined and cannot be changed unless you hack the class itself.</p>
+
+<p><strong>Random Code:</strong></p>
+
+<div class="highlight">
+<pre><span class="x">randomCode();</span>
+</pre>
+</div>
+
+
+<p>This function ill create random code to add before the file name of uploaded file to make every filename unique. </p>
+
+<p><strong>Uploaded Function:</strong></p>
+
+<div class="highlight">
+<pre><span class="x">uploadToServer($tmpFileName, $originalPath);</span>
+</pre>
+</div>
+
+
+<p>This is the function to call to move the temporary uploaded file to the original path. If the file is uploaded properly then it will return true. <strong>$tmpFileName</strong> is the variable for temporary uploaded file and <strong>$originalPath</strong>  is the path where the file will be stored, developer will be use this path to store in the database as a string.</p>
+
+<p><strong>Usages:</strong>
+Using this class developer can allow users to upload image, pdf files, audio files and video files.</p>
+
+<p>Any feedback or bug report can be submitted via github issues. I will try to update as early as I can.  If you want to buy me a coffee <em>that will be great</em>, Donate. </p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/mazharul">mazharul</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
