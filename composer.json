@@ -1,0 +1,17 @@
+{
+    "name": "maz/file_upload_class",
+    "type": "class",
+    "description": "File uploading and manipulation",
+    "keywords": ["upload","file"],
+    "homepage": "http://mazharul.github.com/Uploaded-file-manipulation/",
+    "authors": [
+        {
+            "name": "Mazharul Anwar",
+            "email": "mazharul2007@gmail.com",
+            "homepage": "http://mazharulanwar.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.1.0"
+    }
+}

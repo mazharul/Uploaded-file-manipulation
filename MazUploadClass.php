@@ -74,16 +74,16 @@ public function createPath($uploadType){
 									 $umask = umask(0);
 									  mkdir("user_uploads", 0777, true); 
 									 umask($umask);
-									 }else{}						 
+								}else{}						 
 									 $umask = umask(0);
 									  mkdir("user_uploads/$uploadType", 0777, true); 
 									 umask($umask);
-									}else{}
+						}else{}
 
 									 $umask = umask(0);
 									   mkdir("user_uploads/$uploadType/$tyear", 0777, true); 
 									   umask($umask);
-									   } else {} 
+					} else {} 
 									 $umask = umask(0);
 									   mkdir("user_uploads/$uploadType/$tyear/$tmonth", 0777, true);
 										umask($umask);
